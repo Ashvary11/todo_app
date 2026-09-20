@@ -1,76 +1,107 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../redux/todoSlice";
 import { toast } from "react-toastify";
 
 function AddTodo() {
   const [input, setInput] = useState("");
+
   const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
+
+  const completedTodos = todos.filter((todo) => todo.completed).length;
 
   const handleTodo = (e) => {
     e.preventDefault();
-    if (!input.trim()) {
+
+    const value = input.trim();
+
+    if (!value) {
       toast.error("Please enter a todo.");
       return;
     }
-    dispatch(addTodo(input));
+
+    dispatch(addTodo(value));
     setInput("");
-    toast.success(`Todo Added: ${input.slice(0, 12)}...`, {
-      pauseOnFocusLoss: false,
-      position: "top-center",
-      autoClose: 2000,
-    });
+
+    toast.success("Todo added");
   };
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 md:p-8">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-600 text-center mb-6">
-        My Todo List
-      </h1>
+    <section>
+      {/* Header */}
+      <div className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="mb-2 text-sm font-medium text-teal-400">
+            YOUR TASKS
+          </p>
 
-      <form
-        onSubmit={handleTodo}
-        className="flex flex-col sm:flex-row items-center gap-4 justify-center"
-      >
-        <div className="relative w-full sm:w-3/4 md:w-2/3">
-          <input
-            onChange={(e) => setInput(e.target.value)}
-            type="text"
-            className="w-full py-3 px-4 rounded-lg   text-base sm:text-lg border  bg-blackborder-gray-300 focus:outline-none bg-slate-50 focus:ring-2 focus:ring-yellow-500 bg-opacity-80 text-center text-orange-900 font-semibold 
-            focus:bg-white
-            "
-            placeholder="Add your todo..."
-            value={input}
-            maxLength={100}
-            list="sampleLists"
-          />
-          
-          {input && (
-            <button
-              type="button"
-              onClick={() => setInput("")}
-              className="absolute right-2 top-3.5   transform -translate-y-1/2 text-gray-500 hover:text-red-500 focus:outline-none   "
-            >
-              ✖
-            </button>
-          )}
-          <datalist id="sampleLists">
-            <option value="Review and approve employee reports" />
-            <option value="Check emails and respond to urgent messages" />
-            <option value="Grocery shopping" />
-            <option value="Review monthly budget" />
-          </datalist>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            My Todo List
+          </h1>
+
+          <p className="mt-2 text-sm text-slate-400 sm:text-base">
+            Keep your day organized, one task at a time.
+          </p>
         </div>
 
-        <button
-          type="submit"
-          className="py-2 px-4 sm:px-6 bg-amber-700 text-white text-base sm:text-lg md:text-xl font-semibold rounded-lg transition duration-300 hover:bg-amber-800 disabled:bg-gray-400 disabled:cursor-not-allowed"
-          disabled={!input}
-        >
-          Add Todo
-        </button>
+        <div className="flex gap-2">
+          <div className="rounded-xl border border-slate-800 bg-slate-900 px-4 py-3">
+            <p className="text-xs text-slate-500">Total</p>
+            <p className="text-xl font-bold">{todos.length}</p>
+          </div>
+
+          <div className="rounded-xl border border-slate-800 bg-slate-900 px-4 py-3">
+            <p className="text-xs text-slate-500">Done</p>
+            <p className="text-xl font-bold text-teal-400">
+              {completedTodos}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Add Todo */}
+      <form
+        onSubmit={handleTodo}
+        className="mb-8 rounded-2xl border border-slate-800 bg-slate-900/80 p-3 shadow-xl sm:p-4"
+      >
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="relative flex-1">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="What needs to be done?"
+              maxLength={100}
+              className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3.5 pr-10 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+            />
+
+            {input && (
+              <button
+                type="button"
+                onClick={() => setInput("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 transition hover:text-white"
+              >
+                ×
+              </button>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={!input.trim()}
+            className="rounded-xl bg-teal-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-teal-400 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-500"
+          >
+            + Add Task
+          </button>
+        </div>
+
+        <div className="mt-2 flex justify-between px-1 text-xs text-slate-500">
+          <span>Press Enter to add</span>
+          <span>{input.length}/100</span>
+        </div>
       </form>
-    </div>
+    </section>
   );
 }
 

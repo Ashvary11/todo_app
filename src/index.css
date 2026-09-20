@@ -4,13 +4,7 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* background-color: rgba(35, 33, 33, 0.753);
-  color: white; */
-  /* background-image: url("./todoIMg.jpg"); */
-  /* background-size: cover; */
-  /* background-position: center; */
-  /* backdrop-filter: blur(3px); */
+  -moz-osx-font-smoothing: grayscale; 
 }
 
 code {

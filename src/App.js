@@ -1,41 +1,52 @@
 import "./App.css";
+
 import AddTodo from "./components/AddTodo";
 import EditTodo from "./components/EditTodo";
 import Todos from "./components/Todos";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="min-h-screen bg-slate-950 text-white">
         <ToastContainer
           position="top-center"
-          autoClose={2000}
+          autoClose={1800}
           hideProgressBar
           newestOnTop
           closeOnClick
-          rtl={false}
           pauseOnFocusLoss={false}
           draggable={false}
           pauseOnHover={false}
+          theme="dark"
         />
+
         <Routes>
           <Route
             path="/"
             element={
-              <>
+              <main className="mx-auto min-h-screen w-full max-w-5xl px-4 py-6 sm:px-6 sm:py-10">
                 <AddTodo />
                 <Todos />
-              </>
+              </main>
             }
           />
 
-          <Route path="/edit/:id" element={<EditTodo />} />
+          <Route
+            path="/edit/:id"
+            element={
+              <main className="mx-auto min-h-screen w-full max-w-2xl px-4 py-6 sm:px-6 sm:py-10">
+                <EditTodo />
+              </main>
+            }
+          />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
