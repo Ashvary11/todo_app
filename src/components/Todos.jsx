@@ -52,7 +52,7 @@ function TodoItem({ todo, index }) {
             {/* Todo Text */}
             <div className="min-w-0 flex-1">
               <p
-                className={`break-words text-sm leading-6 sm:text-base ${
+                className={`break-words text-base leading-6 sm:text-lg ${
                   todo.completed
                     ? "text-yellow-900/50 line-through"
                     : "text-yellow-950"
@@ -135,12 +135,18 @@ function Todos() {
   };
   return (
     <section>
-      <div className="mb-4">
-        <h2 className="text-sm font-semibold text-yellow-950">All Tasks</h2>
+      <div className="mb-4 flex items-end justify-between">
+        <div>
+          <h2 className="text-base font-semibold text-yellow-950">All Tasks</h2>
 
-        <p className="mt-1 text-xs text-yellow-900">
-          {todos.length} {todos.length === 1 ? "task" : "tasks"}
-        </p>
+          <p className="mt-1 text-sm text-yellow-900">
+            {todos.length} {todos.length === 1 ? "task" : "tasks"}
+          </p>
+        </div>
+
+        <span className="text-xs font-medium text-yellow-900/50">
+          ⋮⋮ Drag to reorder
+        </span>
       </div>
 
       <DragDropContext onDragEnd={handleDragEnd}>

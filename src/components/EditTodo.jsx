@@ -60,7 +60,6 @@ function EditTodo() {
   return (
     <div className="flex min-h-[70vh] items-center justify-center">
       <div className="w-full">
-       
         <Link
           to="/"
           className="mb-6 inline-flex items-center gap-2 ml-1 font-medium text-yellow-900/70 transition hover:text-yellow-950 text-3xl"
@@ -68,12 +67,11 @@ function EditTodo() {
           ←
         </Link>
 
-       
         <div className="glass-card rounded-2xl p-5 shadow-xl sm:p-7">
           <div className="mb-6">
             <p className="text-sm font-semibold text-orange-800">EDIT TASK</p>
 
-            <h1 className="mt-1 text-2xl font-bold text-yellow-950">
+            <h1 className="mt-1 text-3xl font-bold text-yellow-950">
               Update your todo
             </h1>
 
@@ -89,7 +87,7 @@ function EditTodo() {
               maxLength={100}
               onChange={(e) => setUpdatingTodo(e.target.value)}
               rows={5}
-              className="w-full resize-none rounded-xl border border-white/70 bg-white/45 p-4 text-sm leading-6 text-yellow-950 outline-none transition placeholder:text-yellow-900/40 focus:border-yellow-800/30 focus:bg-white/60 focus:ring-4 focus:ring-yellow-900/10"
+              className="w-full resize-none rounded-xl border border-white/70 bg-white/45 p-4 text-base leading-7 text-yellow-950 outline-none transition placeholder:text-yellow-900/40 focus:border-yellow-800/30 focus:bg-white/60 focus:ring-4 focus:ring-yellow-900/10"
               placeholder="Enter your todo..."
             />
 

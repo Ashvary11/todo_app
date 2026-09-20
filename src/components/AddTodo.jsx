@@ -74,7 +74,7 @@ function AddTodo() {
               maxLength={100}
               autoComplete="off"
               list="todo-suggestions"
-              className="w-full rounded-xl border border-white/60 bg-white/45 px-4 py-3.5 pr-10 text-sm font-medium text-yellow-950 shadow-sm outline-none transition placeholder:text-yellow-900/50 focus:border-yellow-800/30 focus:bg-white/60 focus:ring-4 focus:ring-yellow-900/10"
+              className="w-full rounded-xl border border-white/60 bg-white/45 px-4 py-3.5 pr-10 text-base font-medium text-yellow-950 shadow-sm outline-none transition placeholder:text-yellow-900/50 focus:border-yellow-800/30 focus:bg-white/60 focus:ring-4 focus:ring-yellow-900/10"
             />
 
             <datalist id="todo-suggestions">
@@ -97,7 +97,7 @@ function AddTodo() {
           <button
             type="submit"
             disabled={!input.trim()}
-            className="rounded-xl bg-yellow-800 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-yellow-900 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500"
+            className="rounded-xl bg-yellow-800 px-6 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-yellow-900 disabled:cursor-not-allowed disabled:bg-yellow-800/40 disabled:text-yellow-950/40 disabled:shadow-none"
           >
             + Add Task
           </button>
