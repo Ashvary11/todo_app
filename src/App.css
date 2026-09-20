@@ -19,15 +19,11 @@ body {
     "Segoe UI",
     sans-serif;
 
-  color: white;
-  background-color: #020617;
+  color: #1e293b;
 
-  /* Your existing background */
+  /* Your home image */
   background-image:
-    linear-gradient(
-      rgba(2, 6, 23, 0.72),
-      rgba(2, 6, 23, 0.82)
-    ),
+    linear-gradient(rgba(255, 248, 230, 0.22), rgba(255, 248, 230, 0.22)),
     url("./assets/home.jpg");
 
   background-size: cover;
@@ -38,29 +34,50 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Prevent ugly tap highlight on mobile */
+/* Main glass style */
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  background: rgba(255, 255, 255, 0.38);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Better mobile tap behavior */
 button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Consistent fonts */
 button,
 input,
 textarea {
   font: inherit;
 }
 
-/* Selection */
 ::selection {
-  background: #14b8a6;
-  color: #020617;
+  background: #fde68a;
+  color: #78350f;
 }
 
-/* Better mobile background behavior */
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
   body {
     background-attachment: scroll;
     background-position: center;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.48);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }

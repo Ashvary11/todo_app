@@ -12,24 +12,24 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-slate-950 text-white">
+      <div className="min-h-screen text-slate-800">
         <ToastContainer
           position="top-center"
-          autoClose={1800}
+          autoClose={1600}
           hideProgressBar
           newestOnTop
           closeOnClick
           pauseOnFocusLoss={false}
           draggable={false}
           pauseOnHover={false}
-          theme="dark"
+          theme="light"
         />
 
         <Routes>
           <Route
             path="/"
             element={
-              <main className="mx-auto min-h-screen w-full max-w-5xl px-4 py-6 sm:px-6 sm:py-10">
+              <main className="mx-auto min-h-screen w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
                 <AddTodo />
                 <Todos />
               </main>
@@ -39,7 +39,7 @@ function App() {
           <Route
             path="/edit/:id"
             element={
-              <main className="mx-auto min-h-screen w-full max-w-2xl px-4 py-6 sm:px-6 sm:py-10">
+              <main className="mx-auto min-h-screen w-full max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
                 <EditTodo />
               </main>
             }
